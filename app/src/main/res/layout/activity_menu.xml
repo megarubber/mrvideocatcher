@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:text="@string/title"
-        android:textSize="40dp"
+        android:textSize="40sp"
         android:gravity="center"
         >
 
@@ -25,7 +25,7 @@
             app:layout_flexBasisPercent="35%"
             android:layout_margin="20dp"
             android:background="@drawable/rounded_corner"
-            android:fontFamily="sans-serif-medium"
+
             />
 
         <Button
@@ -35,6 +35,8 @@
             app:layout_flexBasisPercent="35%"
             android:layout_margin="20dp"
             android:background="@drawable/rounded_corner"
+            android:drawableLeft="@drawable/youtube"
+            android:scaleType="fitCenter"
             />
 
         <Button
