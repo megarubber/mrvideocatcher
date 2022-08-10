@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MrVideoCatcher</string>
+    <string name="title">Choose a service</string>
 </resources>
