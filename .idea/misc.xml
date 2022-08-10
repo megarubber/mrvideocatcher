@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/SENAI/AndroidStudioProjects/MrVideoCatcher/app/src/main/res/drawable/rounded_corner.xml" value="0.2985" />
         <entry key="..\:/Users/SENAI/AndroidStudioProjects/MrVideoCatcher/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/SENAI/AndroidStudioProjects/MrVideoCatcher/app/src/main/res/layout/activity_menu.xml" value="0.22" />
       </map>
     </option>
   </component>
