@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">MrVideoCatcher</string>
     <string name="youtube">Download a video from YouTube</string>
-    <string name="download">Download</string>
+    <string name="download_video">Download Video</string>
+    <string name="download_audio">Download Audio</string>
     <string name="youtube_link">Put here a YouTube video link here</string>
+    <string name="file_name">Choose a file name</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
 </resources>

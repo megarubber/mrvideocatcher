@@ -12,15 +12,24 @@
             android:orientation="vertical"
             android:gravity="center">
                 <EditText
+                    android:id="@+id/link"
                     android:hint="@string/youtube_link"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
+                <Button
+                    android:id="@+id/video"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/rounded_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/download_video"
+                    />
                 <Button
                     android:layout_marginTop="40dp"
                     android:background="@drawable/rounded_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/download"
+                    android:text="@string/download_audio"
                     />
         </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
