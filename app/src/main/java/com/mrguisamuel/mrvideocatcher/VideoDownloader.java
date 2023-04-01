@@ -51,11 +51,13 @@ public class VideoDownloader {
                     try {
                         downloadUrl = ytFiles.get(itag).getUrl();
                         if (downloadUrl != null) {
+                            System.out.println("mais um teste");
                             download(downloadUrl, fileName);
                             Toast.makeText(myContext, "Download started...", Toast.LENGTH_SHORT).show();
                         }
                     } catch (Exception e) {
                         Toast.makeText(myContext, "Couldn't download the video.", Toast.LENGTH_SHORT).show();
+                        System.out.println(e.toString());
                     }
                 }
             }
@@ -67,9 +69,10 @@ public class VideoDownloader {
         request.setTitle("Download Video");
         request.setDescription("Your video is downloading");
         request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
+        //request.setDestinationInExternalFilesDir(this.myContext, Environment.DIRECTORY_DOWNLOADS,  fileName + ".mp4");
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName + ".mp4");
         request.allowScanningByMediaScanner();
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-        request.setDestinationInExternalFilesDir(this.myContext, Environment.DIRECTORY_DOWNLOADS,  fileName + ".mp4");
 
         DownloadManager manager = (DownloadManager) this.myContext.getSystemService(Context.DOWNLOAD_SERVICE);
         manager.enqueue(request);

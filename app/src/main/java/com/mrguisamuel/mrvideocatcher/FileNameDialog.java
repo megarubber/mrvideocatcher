@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -39,12 +40,18 @@ public class FileNameDialog {
             @Override
             public void onClick(View view) {
                 name = inputName.getText().toString();
-                try {
-                    execute.call();
-                } catch (Exception e) {
-                    System.out.println(e);
+                if(name.length() > 0) {
+                    try {
+                        execute.call();
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                    dialog.dismiss();
+                } else {
+                    Toast.makeText(
+                            myContext, "Invalid name!", Toast.LENGTH_SHORT
+                    ).show();
                 }
-                dialog.dismiss();
             }
         });
 
