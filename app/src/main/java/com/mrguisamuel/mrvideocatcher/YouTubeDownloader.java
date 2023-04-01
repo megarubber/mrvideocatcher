@@ -36,42 +36,58 @@ public class YouTubeDownloader extends AppCompatActivity {
         getSupportActionBar().setTitle("Download video from YouTube");
 
         Button videoDownload = (Button) findViewById(R.id.video);
-        EditText link = (EditText) findViewById(R.id.link);
+        Button audioDownload = (Button) findViewById(R.id.audio);
 
-        VideoDownloader youtubeDownloader = new VideoDownloader(SocialMedia.YOUTUBE, this);
+        EditText link = (EditText) findViewById(R.id.link);
         videoDownload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(ContextCompat.checkSelfPermission(
-                        YouTubeDownloader.this,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                        != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(
-                            YouTubeDownloader.this,
-                            new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE },
-                            101
-                    );
-                }
-
-                if(ContextCompat.checkSelfPermission(
-                        YouTubeDownloader.this,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                        == PackageManager.PERMISSION_GRANTED) {
-                    FileNameDialog.createFileNameDialog(
-                            YouTubeDownloader.this,
-                            () -> {
-                                youtubeDownloader.downloadVideo(link.getText().toString(), FileNameDialog.name);
-                                link.setText("");
-                                return null;
-                            }
-                    );
-                } else {
-                    Toast.makeText(
-                            getApplicationContext(),
-                            "Download failed because write permission is not granted.",
-                            Toast. LENGTH_LONG).show();
-                }
+                downloadMedia(link, false);
             }
         });
+
+        audioDownload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                downloadMedia(link, true);
+            }
+        });
+    }
+
+    private void downloadMedia(
+            EditText linkInput,
+            boolean isAudio
+    ) {
+        VideoDownloader downloader = new VideoDownloader(SocialMedia.YOUTUBE, this);
+
+        if(ContextCompat.checkSelfPermission(
+                YouTubeDownloader.this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(
+                    YouTubeDownloader.this,
+                    new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE },
+                    101
+            );
+        }
+
+        if(ContextCompat.checkSelfPermission(
+                YouTubeDownloader.this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                == PackageManager.PERMISSION_GRANTED) {
+            FileNameDialog.createFileNameDialog(
+                    YouTubeDownloader.this,
+                    () -> {
+                        downloader.downloadContent(linkInput.getText().toString(), FileNameDialog.name, isAudio);
+                        linkInput.setText("");
+                        return null;
+                    }
+            );
+        } else {
+            Toast.makeText(
+                    getApplicationContext(),
+                    "Download failed because write permission is not granted.",
+                    Toast. LENGTH_LONG).show();
+        }
     }
 }
