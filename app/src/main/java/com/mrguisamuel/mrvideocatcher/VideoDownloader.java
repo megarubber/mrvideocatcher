@@ -61,8 +61,8 @@ public class VideoDownloader {
 
     private void download(String url, String fileName, boolean isAudio) {
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
-        request.setTitle(isAudio ? "Download Video" : "Download Audio");
-        request.setDescription(isAudio ? "Your video is downloading" : "Your audio is downloading");
+        request.setTitle(isAudio ? "Download Audio" : "Download Video");
+        request.setDescription(isAudio ? "Your audio is downloading" : "Your video is downloading");
         request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
         //request.setDestinationInExternalFilesDir(this.myContext, Environment.DIRECTORY_DOWNLOADS,  fileName + ".mp4");
         String extension = isAudio ? ".m4a" : ".mp4";
